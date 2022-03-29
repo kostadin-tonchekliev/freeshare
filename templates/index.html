@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+        File: <input type="file" name="file_input" value="file_input" class="custom-file-input" id="upload"><br/>
+        TTL: <input type="number" name="ttl_input" value="ttl_input"><br/>
+        <button type="submit">Upload</button>
+</form>
+{% endblock %}

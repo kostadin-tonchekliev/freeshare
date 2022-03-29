@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>
+    Download the file here: <a href="/{{ path_message }}/{{ file_message }}" id="lnk">{{ file_message }}</a> <br/>
+    This is the url for downloading the file using a curl request:<br /> http://127.0.0.1:5000/{{ path_message }}/{{ file_message }} <br/><br/>
+    You can also use the standard url for downloading it. <br/>
+</p>
+<div id="inv">
+    {{ session_kill() }}
+</div>
+{% endblock %}

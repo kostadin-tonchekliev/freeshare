@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FreeShare</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <script type="text/javascript" src="{{ url_for('static',filename='script.js') }}"></script>
+</head>
+<body>
+<h1><a href="/">FreeShare</a></h1>
+    <div class="main">
+    {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
