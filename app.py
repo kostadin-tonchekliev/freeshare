@@ -8,12 +8,12 @@ import time
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'df0331cefc6c2b9a5d0208a726a5d1c0fd37324feba25506' #Change this to something unique
-savefolder = 'files' #Change this to the folder you want to save the files to
+app.config['SECRET_KEY'] = '************' #Change this to something unique
 domain = 'http://192.158.29.110' #Change this to the domain you want to serve the files from
 
 path = os.getcwd()
 current_folders = []
+savefolder = 'static'
 
 
 logger = logging.getLogger(__name__)

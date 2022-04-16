@@ -3,16 +3,16 @@
 
 ---
 
-Have you ever wanted to share a file but were afraid of the security risks of someone else hosting your file or perhaps wanted some features they didn't offer? Well this is the project for you. I started FreeShare as a way of learning Python servers and API's however it turned into something which I tought other people can enjoy. Builder interly with Python and based on Flask. It might not be the prettiest because front-end isn't my strong side but is usable for now.
+Have you ever wanted to share a file but were afraid of the security risks of someone else hosting your file or perhaps wanted some features they didn't offer? Well this is the project for you. I started FreeShare as a way of learning Python servers and API's however it turned into something which I thought other people can enjoy. Build entirely with Python and based on Flask. It might not be the prettiest because front-end isn't my strong side but is usable for now.
 ### Features:
 + Web page for uploading/downloading files
 + Ability to upload/download files directly over a POST request
 + Delete files after a given time
-+ Customizability
++ Customisability
 
 ### Requirements:
-Nothing much, just a place to run the Flask server and it is up to if you want to have it publically accessible or totally local. <br>
-*Note: depending on your setup you might need to install a separate server like apache/nginx which will be resposible for the actual serving of the uploaded files. An easy way of seeing if you need such is by trying to open an uploaded file from the web, if you see a 404 an extra server is required*
+Nothing much, just a place to run the Flask server and it is up to if you want to have it publicly accessible or totally local. <br>
+*Note: depending on your setup you might need to install a separate server like apache/nginx which will be responsible for the actual serving of the uploaded files. An easy way of seeing if you need such is by trying to open an uploaded file from the web, if you see a 404 an extra server is required*
 
 ### Setup:
 Install the required packages:
@@ -22,7 +22,6 @@ Install the required packages:
 Update the app.py file with your own settings.
 ```
     app.config['SECRET_KEY'] = '************************' #Change this to something unique
-    savefolder = 'files' #Change this to the folder you want to save the files to
     domain = 'http://127.0.0.1' #Change this to the domain you want to serve the files from
 ```
 Optional Settings:
