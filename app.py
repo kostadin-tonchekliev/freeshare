@@ -9,7 +9,8 @@ import time
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '************' #Change this to something unique
-domain = 'http://192.158.29.110' #Change this to the domain you want to serve the files from
+domain = 'domain.com' #Change this to the domain you want to serve the files from
+protocol = 'http' #Change this to the protocol you want to use
 
 path = os.getcwd()
 current_folders = []
@@ -72,10 +73,7 @@ def api():
     logger.info(f"[+]{file_name} succesfully created. ")
     x = threading.Thread(target=file_deletion, args=(file_value, folder_name, ttl, ))
     x.start()
-    if ttl is None:
-        return f"Web download link: {domain}/{folder_name}\nCurl download link: {domain}/{savefolder}/{folder_name}/{file_name} + TTL: Permanent\n"
-    else:
-        return f"Web download link: {domain}/{folder_name}\nCurl download link: {domain}/{savefolder}/{folder_name}/{file_name} + TTL: {ttl}\n"
+    return f"Web download link: {protocol}://{domain}/{folder_name}\nCurl download link: {protocol}://{domain}/{savefolder}/{folder_name}/{file_name}\n"
 
 @app.route('/', methods=('GET', 'POST'))
 def main():
@@ -98,8 +96,8 @@ def upload(folder_out):
     if folder_out in current_folders:
         if not 'file_name' in session:
             infile_name = os.listdir(f'{savefolder}/{folder_out}')
-            return render_template('download.html', path_message=f'{savefolder}/{folder_out}', file_message=infile_name[0] )
-        return render_template('uploaded.html', file_message=session['file_name'], ttl_message=session['ttl_value'], path_message=f'{savefolder}/{folder_out}')
+            return render_template('download.html', protocol=protocol, domain=domain, path_message=f'{savefolder}/{folder_out}', file_message=infile_name[0] )
+        return render_template('uploaded.html', protocol=protocol, domain=domain, file_message=session['file_name'], ttl_message=session['ttl_value'], path_message=f'{savefolder}/{folder_out}')
     else:
         logger.warning(f'[!]{request.environ["REMOTE_ADDR"]} tried to access non existant folder /{folder_out}')
         return redirect(url_for('err'))

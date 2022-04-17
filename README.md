@@ -1,13 +1,17 @@
 # FreeShare
-### An open source file sharing service
+## An open source file sharing service
 
 ---
 
-Have you ever wanted to share a file but were afraid of the security risks of someone else hosting your file or perhaps wanted some features they didn't offer? Well this is the project for you. I started FreeShare as a way of learning Python servers and API's however it turned into something which I thought other people can enjoy. Build entirely with Python and based on Flask. It might not be the prettiest because front-end isn't my strong side but is usable for now.
+Have you ever wanted to share a file but were afraid of the security risks of someone else hosting your file or perhaps wanted some features they didn't offer? Well this is the project for you. I started FreeShare as a way of learning Python servers and API's however it turned into something which I thought other people can enjoy. Build entirely with Python and based on Flask. It might not be the prettiest because front-end isn't my strong side but is usable for now. <br>
+
+### You can find a demo of the project on -> [demo.oktks.info](http://demo.oktks.info). Feel free to use it
+
+---
 ### Features:
 + Web page for uploading/downloading files
 + Ability to upload/download files directly over a POST request
-+ Delete files after a given time
++ Set a time after which the file will be automatically deleted
 + Customisability
 
 ### Requirements:
@@ -22,7 +26,8 @@ Install the required packages:
 Update the app.py file with your own settings.
 ```
     app.config['SECRET_KEY'] = '************************' #Change this to something unique
-    domain = 'http://127.0.0.1' #Change this to the domain you want to serve the files from
+    domain = 'demo.oktks.info' #Change this to the domain you want to serve the files from
+    protocol = 'http' #Change this to the protocol you want to use
 ```
 Optional Settings:
 ```
@@ -63,4 +68,3 @@ When making the POST request you need to add the file and the TTL is optional, n
 
 ### To do:
 + Create a docker image where everything is already setup
-+ Create a demo page where you can test it or use daily
