@@ -8,7 +8,7 @@ import time
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '************' #Change this to something unique
+app.config['SECRET_KEY'] = '**********' #Change this to something unique
 domain = 'domain.com' #Change this to the domain you want to serve the files from
 protocol = 'http' #Change this to the protocol you want to use
 
@@ -23,6 +23,13 @@ log_file = logging.FileHandler('info.log')
 formatter = logging.Formatter('[%(thread)d](%(asctime)s): %(message)s')
 log_file.setFormatter(formatter)
 logger.addHandler(log_file)
+
+guardian = logging.getLogger('guardian')
+guardian.setLevel(logging.DEBUG)
+logfile = logging.FileHandler('guardian.log')
+format = logging.Formatter('[%(thread)d](%(asctime)s): %(message)s')
+logfile.setFormatter(format)
+guardian.addHandler(logfile)
 
 try:
     current_folders = os.listdir(f'{path}/{savefolder}')
@@ -62,8 +69,12 @@ def session_kill():
     session.pop('ttl_value', default=None)
     logger.info("[-]Session variables killed")
 
+def guardian_log():
+    guardian.info(f'{request.environ["REMOTE_ADDR"]} requested {request.path}')
+
 @app.route('/api', methods=['POST'])
 def api():
+    guardian_log()
     file_value = request.files['file']
     file_name = file_value.filename
     ttl = request.form.get('ttl')
@@ -77,6 +88,7 @@ def api():
 
 @app.route('/', methods=('GET', 'POST'))
 def main():
+    guardian_log()
     if request.method == "POST":
         logger.info("[+]Session started")
         file_value = request.files['file_input']
@@ -93,6 +105,7 @@ def main():
 
 @app.route('/<folder_out>/')
 def upload(folder_out):
+    guardian_log()
     if folder_out in current_folders:
         if not 'file_name' in session:
             infile_name = os.listdir(f'{savefolder}/{folder_out}')
@@ -104,6 +117,7 @@ def upload(folder_out):
 
 @app.route('/404')
 def err():
+    guardian_log()
     return render_template('404.html')
 
 app.jinja_env.globals.update(session_kill=session_kill)

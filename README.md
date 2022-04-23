@@ -54,6 +54,8 @@ When making the POST request you need to add the file and the TTL is optional, n
 ### Structure:
 ```
 ├── app.py -> Flask app
+├── info.log -> Log file for main activity
+├── guardian.log -> Access log
 ├── /files -> Folder to save files to
 └── /static -> Static files for the web page
     ├── script.js
