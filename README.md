@@ -5,8 +5,6 @@
 
 Have you ever wanted to share a file but were afraid of the security risks of someone else hosting your file or perhaps wanted some features they didn't offer? Well this is the project for you. I started FreeShare as a way of learning Python servers and API's however it turned into something which I thought other people can enjoy. Build entirely with Python and based on Flask. It might not be the prettiest because front-end isn't my strong side but is usable for now. <br>
 
-### You can find a demo of the project on -> [demo.oktks.info](http://demo.oktks.info). Feel free to use it
-
 ---
 ### Features:
 + Web page for uploading/downloading files
