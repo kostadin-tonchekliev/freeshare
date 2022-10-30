@@ -24,7 +24,7 @@ Install the required packages:
 Update the app.py file with your own settings.
 ```
     app.config['SECRET_KEY'] = '************************' #Change this to something unique
-    domain = 'demo.oktks.info' #Change this to the domain you want to serve the files from
+    domain = 'domain.com' #Change this to the domain you want to serve the files from
     protocol = 'http' #Change this to the protocol you want to use
 ```
 Optional Settings:
